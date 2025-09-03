@@ -42,11 +42,21 @@ class CustomInputDialog:
         )
         self.entry.pack(pady=5)
         self.entry.insert(0, initialvalue)
-        
+
+        # Error message label (hidden by default)
+        self.error_label = tk.Label(
+            self.top,
+            text="",
+            fg="red",
+            bg="#f0f0f0",
+            font=("Segoe UI", 9)
+        )
+        self.error_label.pack(pady=(0, 5))
+
         # Buttons with professional styling
         button_frame = tk.Frame(self.top, bg='#f0f0f0')
         button_frame.pack(pady=(15, 20))
-        
+
         ok_button = tk.Button(
             button_frame, 
             text="OK", 
@@ -61,7 +71,7 @@ class CustomInputDialog:
             cursor='hand2'
         )
         ok_button.pack(side=tk.LEFT, padx=8)
-        
+
         cancel_button = tk.Button(
             button_frame, 
             text="Cancel", 
@@ -76,14 +86,17 @@ class CustomInputDialog:
             cursor='hand2'
         )
         cancel_button.pack(side=tk.LEFT, padx=8)
-        
+
+        # Real-time validation: bind key release to validate
+        self.entry.bind('<KeyRelease>', self.validate_input)
+
         # Bind Enter key to OK
         self.top.bind('<Return>', lambda e: self.ok())
         self.top.bind('<Escape>', lambda e: self.cancel())
-        
+
         # Set focus after a short delay to ensure dialog is fully rendered
         self.top.after(100, self.set_focus)
-        
+
         parent.wait_window(self.top)
     
     def set_focus(self):
@@ -91,10 +104,23 @@ class CustomInputDialog:
         self.entry.select_range(0, tk.END)
     
     def ok(self):
-        self.result = self.entry.get()
+        value = self.entry.get()
+        valid = self.validate_input()
+        if not valid:
+            return
+        self.result = value
         self.top.destroy()
-        # Ensure main window regains focus
         self.top.master.focus_force()
+    def validate_input(self, event=None):
+        value = self.entry.get()
+        # Example validation: not empty and at least 2 chars
+        if not value or len(value.strip()) < 2:
+            self.entry.config(bg="#ffe6e6")
+            self.error_label.config(text="Input must be at least 2 characters.")
+            return False
+        self.entry.config(bg="#ffffff")
+        self.error_label.config(text="")
+        return True
     
     def cancel(self):
         self.result = None

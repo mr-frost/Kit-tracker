@@ -1,59 +1,26 @@
 {
   "devices": [
     {
-      "type": "signal_collect",
-      "model": "SNOOPER",
-      "serial": "0001",
-      "op": "SNAKE_EATER",
-      "description": "SIGINT device on Op SNAKE_EATER",
-      "position": {
-        "lat": 33.980110848205086,
-        "lon": 32.20302455010774,
-        "alt": 12.027869318633968,
-        "spd": 1.1076780925175322
-      },
-      "timestamp": "2025-09-03T16:13:35.916Z",
-      "mobile": true,
-      "online": true,
-      "tampered": false,
-      "battery": 87,
-      "payload": {
-        "type": "signal_capture",
-        "id": "LFYFKDSL",
-        "frequency_mhz": "958.21",
-        "bandwidth_khz": 211,
-        "snr_db": "17.0",
-        "samples": [
-          "-0.702",
-          "-0.026",
-          "-0.210",
-          "-0.825",
-          "-0.950"
-        ]
-      },
-      "last_seen": 1756916016.1388068
-    },
-    {
       "type": "beacon",
       "model": "BE300X",
-      "serial": "X10002234",
+      "serial": "X10002235",
       "op": "REDZONE",
-      "description": "SATCOM GPS Beacon fitted into car B in Op REDZONE",
+      "description": "SATCOM GPS Beacon fitted into car A in Op REDZONE",
       "position": {
-        "lat": 22.003533764389697,
-        "lon": 23.00428503063323,
-        "alt": 2.208413646644857,
-        "spd": 1.0489548695198856
+        "lat": 21.994424732339088,
+        "lon": 22.995381847313034,
+        "alt": 5.082409736982001,
+        "spd": 4.26553600087261
       },
-      "timestamp": "2025-09-03T16:13:31.832Z",
+      "timestamp": "2025-09-03T18:59:35.931Z",
       "mobile": true,
       "online": true,
       "tampered": false,
-      "battery": 97,
+      "battery": 25,
       "payload": {
         "type": ""
       },
-      "last_seen": 1756916012.0677388
+      "last_seen": 1756925976.2880805
     },
     {
       "type": "uav",
@@ -62,48 +29,26 @@
       "op": "SNAKE_EATER",
       "description": "KINETIC UAV on Op SNAKE_EATER",
       "position": {
-        "lat": 33.99154138109349,
-        "lon": 32.01738736292154,
-        "alt": 997.9051506864779,
-        "spd": 30.752255985436225
+        "lat": 33.98349085681879,
+        "lon": 32.00075697799092,
+        "alt": 997.9210401717908,
+        "spd": 30.595302055462057
       },
-      "timestamp": "2025-09-03T16:11:07.337Z",
-      "mobile": true,
-      "online": false,
-      "tampered": false,
-      "battery": 89,
-      "payload": {
-        "type": "image_fragment",
-        "id": "Z2OGVGUB",
-        "format": "jpg",
-        "size_kb": 285,
-        "fragment": 1,
-        "total_fragments": 10,
-        "checksum": "482a6f9e"
-      },
-      "last_seen": 1756915867.5595899
-    },
-    {
-      "type": "beacon",
-      "model": "BE300X",
-      "serial": "X10002235",
-      "op": "REDZONE",
-      "description": "SATCOM GPS Beacon fitted into car A in Op REDZONE",
-      "position": {
-        "lat": 22.003729620783865,
-        "lon": 22.99145144839286,
-        "alt": 4.492758049519854,
-        "spd": 3.409675224661265
-      },
-      "timestamp": "2025-09-03T16:13:34.804Z",
+      "timestamp": "2025-09-03T18:59:29.330Z",
       "mobile": true,
       "online": true,
       "tampered": false,
-      "battery": 6,
+      "battery": 2,
       "payload": {
-        "type": ""
+        "type": "image_fragment",
+        "id": "IC5XJGCH",
+        "format": "bmp",
+        "size_kb": 180,
+        "fragment": 7,
+        "total_fragments": 10,
+        "checksum": "07d2dc70"
       },
-      "last_seen": 1756916015.0315971
+      "last_seen": 1756925969.6832206
     },
     {
       "type": "uav",
@@ -112,26 +57,26 @@
       "op": "REDZONE",
       "description": "ISR UAV on Op REDZONE",
       "position": {
-        "lat": 22.045021612917598,
-        "lon": 23.008051517281984,
-        "alt": 5003.783144092022,
-        "spd": 24.45451681828532
+        "lat": 22.045555159935645,
+        "lon": 23.010636853928943,
+        "alt": 4995.496580915273,
+        "spd": 24.351313507032348
       },
-      "timestamp": "2025-09-03T16:13:32.995Z",
+      "timestamp": "2025-09-03T18:59:19.973Z",
       "mobile": false,
       "online": true,
       "tampered": false,
-      "battery": 42,
+      "battery": 73,
       "payload": {
         "type": "image_fragment",
-        "id": "MXSJ7RUF",
-        "format": "jpg",
-        "size_kb": 484,
+        "id": "QV6TVB9I",
+        "format": "bmp",
+        "size_kb": 171,
         "fragment": 1,
         "total_fragments": 10,
-        "checksum": "1e92d601"
+        "checksum": "3a78890d"
       },
-      "last_seen": 1756916013.2189455
+      "last_seen": 1756925981.3741171
     },
     {
       "type": "beacon",
@@ -140,48 +85,75 @@
       "op": "TOUCHDOWN",
       "description": "SATCOM GPS Beacon fitted into car in Op TOUCHDOWN",
       "position": {
-        "lat": 43.997852177008,
-        "lon": 23.000410181438763,
-        "alt": 0.9378076408342069,
-        "spd": 8.162543185188918
+        "lat": 44.00866438999276,
+        "lon": 22.99026808621762,
+        "alt": 4.643623447068756,
+        "spd": 8.172317807524575
       },
-      "timestamp": "2025-09-03T16:13:33.561Z",
+      "timestamp": "2025-09-03T18:59:40.463Z",
       "mobile": true,
       "online": true,
       "tampered": false,
-      "battery": 38,
+      "battery": 83,
       "payload": {
         "type": ""
       },
-      "last_seen": 1756916013.7906275
+      "last_seen": 1756925980.8163545
     },
     {
-      "type": "uav",
-      "model": "AVENGER",
-      "serial": "0002",
-      "op": "TOUCHDOWN",
-      "description": "ISR UAV on Op TOUCHDOWN",
+      "type": "beacon",
+      "model": "BE300X",
+      "serial": "X10002234",
+      "op": "REDZONE",
+      "description": "SATCOM GPS Beacon fitted into car B in Op REDZONE",
       "position": {
-        "lat": 44.04931601561075,
-        "lon": 23.026963910313306,
-        "alt": 3001.9268067148823,
-        "spd": 28.212537955338988
+        "lat": 21.992986138606625,
+        "lon": 22.99010627069266,
+        "alt": -3.3411752568720923,
+        "spd": 1.785673069557515
       },
-      "timestamp": "2025-09-03T16:13:36.422Z",
+      "timestamp": "2025-09-03T18:59:41.014Z",
       "mobile": true,
       "online": true,
-      "tampered": false,
-      "battery": 39,
+      "tampered": true,
+      "battery": 16,
       "payload": {
-        "type": "image_fragment",
-        "id": "D1QBTRX9",
-        "format": "bmp",
-        "size_kb": 96,
-        "fragment": 4,
-        "total_fragments": 10,
-        "checksum": "682d017a"
+        "type": ""
       },
-      "last_seen": 1756916016.645077
+      "last_seen": 1756925981.373494
+    },
+    {
+      "type": "signal_collect",
+      "model": "SNOOPER",
+      "serial": "0001",
+      "op": "SNAKE_EATER",
+      "description": "SIGINT device on Op SNAKE_EATER",
+      "position": {
+        "lat": 33.98423723662645,
+        "lon": 32.200287459774934,
+        "alt": 11.365807165417431,
+        "spd": 0
+      },
+      "timestamp": "2025-09-03T18:59:32.298Z",
+      "mobile": false,
+      "online": true,
+      "tampered": false,
+      "battery": 20,
+      "payload": {
+        "type": "signal_capture",
+        "id": "KVWJW2RH",
+        "frequency_mhz": "1016.51",
+        "bandwidth_khz": 211,
+        "snr_db": "4.7",
+        "samples": [
+          "-0.243",
+          "-0.857",
+          "-0.139",
+          "-0.185",
+          "-0.191"
+        ]
+      },
+      "last_seen": 1756925972.6499643
     },
     {
       "type": "beacon",
@@ -190,78 +162,73 @@
       "op": "TOUCHDOWN",
       "description": "LTE GPS Beacon fitted into truck in Op TOUCHDOWN",
       "position": {
-        "lat": 43.9916567046743,
-        "lon": 22.996244838247716,
-        "alt": -4.37470282030564,
-        "spd": 0.36434973915524305
+        "lat": 44.00054523889183,
+        "lon": 22.999661196977847,
+        "alt": -0.24824676587703154,
+        "spd": 0.5421345843827861
       },
-      "timestamp": "2025-09-03T16:13:36.869Z",
-      "mobile": false,
+      "timestamp": "2025-09-03T18:59:39.945Z",
+      "mobile": true,
       "online": true,
       "tampered": false,
-      "battery": 19,
+      "battery": 7,
       "payload": {
         "type": ""
       },
-      "last_seen": 1756916017.1061084
+      "last_seen": 1756925980.29469
+    },
+    {
+      "type": "uav",
+      "model": "AVENGER",
+      "serial": "0002",
+      "op": "TOUCHDOWN",
+      "description": "ISR UAV on Op TOUCHDOWN",
+      "position": {
+        "lat": 44.035973686469816,
+        "lon": 23.02508869418393,
+        "alt": 2995.297502925564,
+        "spd": 29.742003280229625
+      },
+      "timestamp": "2025-09-03T18:59:39.455Z",
+      "mobile": true,
+      "online": true,
+      "tampered": false,
+      "battery": 36,
+      "payload": {
+        "type": "image_fragment",
+        "id": "UMRDB40D",
+        "format": "bmp",
+        "size_kb": 359,
+        "fragment": 7,
+        "total_fragments": 10,
+        "checksum": "b4f4c5ac"
+      },
+      "last_seen": 1756925979.813713
     }
   ],
   "fetched": true,
   "cache": {
-    "0001_SNOOPER": {
-      "type": "signal_collect",
-      "model": "SNOOPER",
-      "serial": "0001",
-      "op": "SNAKE_EATER",
-      "description": "SIGINT device on Op SNAKE_EATER",
-      "position": {
-        "lat": 33.980110848205086,
-        "lon": 32.20302455010774,
-        "alt": 12.027869318633968,
-        "spd": 1.1076780925175322
-      },
-      "timestamp": "2025-09-03T16:13:35.916Z",
-      "mobile": true,
-      "online": true,
-      "tampered": false,
-      "battery": 87,
-      "payload": {
-        "type": "signal_capture",
-        "id": "LFYFKDSL",
-        "frequency_mhz": "958.21",
-        "bandwidth_khz": 211,
-        "snr_db": "17.0",
-        "samples": [
-          "-0.702",
-          "-0.026",
-          "-0.210",
-          "-0.825",
-          "-0.950"
-        ]
-      },
-      "last_seen": 1756916016.1388068
-    },
-    "X10002234_BE300X": {
+    "X10002235_BE300X": {
       "type": "beacon",
       "model": "BE300X",
-      "serial": "X10002234",
+      "serial": "X10002235",
       "op": "REDZONE",
-      "description": "SATCOM GPS Beacon fitted into car B in Op REDZONE",
+      "description": "SATCOM GPS Beacon fitted into car A in Op REDZONE",
       "position": {
-        "lat": 22.003533764389697,
-        "lon": 23.00428503063323,
-        "alt": 2.208413646644857,
-        "spd": 1.0489548695198856
+        "lat": 21.994424732339088,
+        "lon": 22.995381847313034,
+        "alt": 5.082409736982001,
+        "spd": 4.26553600087261
       },
-      "timestamp": "2025-09-03T16:13:31.832Z",
+      "timestamp": "2025-09-03T18:59:35.931Z",
       "mobile": true,
       "online": true,
       "tampered": false,
-      "battery": 97,
+      "battery": 25,
       "payload": {
         "type": ""
       },
-      "last_seen": 1756916012.0677388
+      "last_seen": 1756925976.2880805
     },
     "0003_SCORPION": {
       "type": "uav",
@@ -270,48 +237,26 @@
       "op": "SNAKE_EATER",
       "description": "KINETIC UAV on Op SNAKE_EATER",
       "position": {
-        "lat": 33.99154138109349,
-        "lon": 32.01738736292154,
-        "alt": 997.9051506864779,
-        "spd": 30.752255985436225
+        "lat": 33.98349085681879,
+        "lon": 32.00075697799092,
+        "alt": 997.9210401717908,
+        "spd": 30.595302055462057
       },
-      "timestamp": "2025-09-03T16:11:07.337Z",
-      "mobile": true,
-      "online": false,
-      "tampered": false,
-      "battery": 89,
-      "payload": {
-        "type": "image_fragment",
-        "id": "Z2OGVGUB",
-        "format": "jpg",
-        "size_kb": 285,
-        "fragment": 1,
-        "total_fragments": 10,
-        "checksum": "482a6f9e"
-      },
-      "last_seen": 1756916017.10629
-    },
-    "X10002235_BE300X": {
-      "type": "beacon",
-      "model": "BE300X",
-      "serial": "X10002235",
-      "op": "REDZONE",
-      "description": "SATCOM GPS Beacon fitted into car A in Op REDZONE",
-      "position": {
-        "lat": 22.003729620783865,
-        "lon": 22.99145144839286,
-        "alt": 4.492758049519854,
-        "spd": 3.409675224661265
-      },
-      "timestamp": "2025-09-03T16:13:34.804Z",
+      "timestamp": "2025-09-03T18:59:29.330Z",
       "mobile": true,
       "online": true,
       "tampered": false,
-      "battery": 6,
+      "battery": 2,
       "payload": {
-        "type": ""
+        "type": "image_fragment",
+        "id": "IC5XJGCH",
+        "format": "bmp",
+        "size_kb": 180,
+        "fragment": 7,
+        "total_fragments": 10,
+        "checksum": "07d2dc70"
       },
-      "last_seen": 1756916015.0315971
+      "last_seen": 1756925969.6832206
     },
     "0003_AVENGER": {
       "type": "uav",
@@ -320,26 +265,26 @@
       "op": "REDZONE",
       "description": "ISR UAV on Op REDZONE",
       "position": {
-        "lat": 22.045021612917598,
-        "lon": 23.008051517281984,
-        "alt": 5003.783144092022,
-        "spd": 24.45451681828532
+        "lat": 22.045555159935645,
+        "lon": 23.010636853928943,
+        "alt": 4995.496580915273,
+        "spd": 24.351313507032348
       },
-      "timestamp": "2025-09-03T16:13:32.995Z",
+      "timestamp": "2025-09-03T18:59:19.973Z",
       "mobile": false,
       "online": true,
       "tampered": false,
-      "battery": 42,
+      "battery": 73,
       "payload": {
         "type": "image_fragment",
-        "id": "MXSJ7RUF",
-        "format": "jpg",
-        "size_kb": 484,
+        "id": "QV6TVB9I",
+        "format": "bmp",
+        "size_kb": 171,
         "fragment": 1,
         "total_fragments": 10,
-        "checksum": "1e92d601"
+        "checksum": "3a78890d"
       },
-      "last_seen": 1756916013.2189455
+      "last_seen": 1756925981.3741171
     },
     "X10002236_BE300X": {
       "type": "beacon",
@@ -348,48 +293,75 @@
       "op": "TOUCHDOWN",
       "description": "SATCOM GPS Beacon fitted into car in Op TOUCHDOWN",
       "position": {
-        "lat": 43.997852177008,
-        "lon": 23.000410181438763,
-        "alt": 0.9378076408342069,
-        "spd": 8.162543185188918
+        "lat": 44.00866438999276,
+        "lon": 22.99026808621762,
+        "alt": 4.643623447068756,
+        "spd": 8.172317807524575
       },
-      "timestamp": "2025-09-03T16:13:33.561Z",
+      "timestamp": "2025-09-03T18:59:40.463Z",
       "mobile": true,
       "online": true,
       "tampered": false,
-      "battery": 38,
+      "battery": 83,
       "payload": {
         "type": ""
       },
-      "last_seen": 1756916013.7906275
+      "last_seen": 1756925980.8163545
     },
-    "0002_AVENGER": {
-      "type": "uav",
-      "model": "AVENGER",
-      "serial": "0002",
-      "op": "TOUCHDOWN",
-      "description": "ISR UAV on Op TOUCHDOWN",
+    "X10002234_BE300X": {
+      "type": "beacon",
+      "model": "BE300X",
+      "serial": "X10002234",
+      "op": "REDZONE",
+      "description": "SATCOM GPS Beacon fitted into car B in Op REDZONE",
       "position": {
-        "lat": 44.04931601561075,
-        "lon": 23.026963910313306,
-        "alt": 3001.9268067148823,
-        "spd": 28.212537955338988
+        "lat": 21.992986138606625,
+        "lon": 22.99010627069266,
+        "alt": -3.3411752568720923,
+        "spd": 1.785673069557515
       },
-      "timestamp": "2025-09-03T16:13:36.422Z",
+      "timestamp": "2025-09-03T18:59:41.014Z",
       "mobile": true,
       "online": true,
-      "tampered": false,
-      "battery": 39,
+      "tampered": true,
+      "battery": 16,
       "payload": {
-        "type": "image_fragment",
-        "id": "D1QBTRX9",
-        "format": "bmp",
-        "size_kb": 96,
-        "fragment": 4,
-        "total_fragments": 10,
-        "checksum": "682d017a"
+        "type": ""
       },
-      "last_seen": 1756916016.645077
+      "last_seen": 1756925981.373494
+    },
+    "0001_SNOOPER": {
+      "type": "signal_collect",
+      "model": "SNOOPER",
+      "serial": "0001",
+      "op": "SNAKE_EATER",
+      "description": "SIGINT device on Op SNAKE_EATER",
+      "position": {
+        "lat": 33.98423723662645,
+        "lon": 32.200287459774934,
+        "alt": 11.365807165417431,
+        "spd": 0
+      },
+      "timestamp": "2025-09-03T18:59:32.298Z",
+      "mobile": false,
+      "online": true,
+      "tampered": false,
+      "battery": 20,
+      "payload": {
+        "type": "signal_capture",
+        "id": "KVWJW2RH",
+        "frequency_mhz": "1016.51",
+        "bandwidth_khz": 211,
+        "snr_db": "4.7",
+        "samples": [
+          "-0.243",
+          "-0.857",
+          "-0.139",
+          "-0.185",
+          "-0.191"
+        ]
+      },
+      "last_seen": 1756925972.6499643
     },
     "A10002234_BE300A": {
       "type": "beacon",
@@ -398,21 +370,49 @@
       "op": "TOUCHDOWN",
       "description": "LTE GPS Beacon fitted into truck in Op TOUCHDOWN",
       "position": {
-        "lat": 43.9916567046743,
-        "lon": 22.996244838247716,
-        "alt": -4.37470282030564,
-        "spd": 0.36434973915524305
+        "lat": 44.00054523889183,
+        "lon": 22.999661196977847,
+        "alt": -0.24824676587703154,
+        "spd": 0.5421345843827861
       },
-      "timestamp": "2025-09-03T16:13:36.869Z",
-      "mobile": false,
+      "timestamp": "2025-09-03T18:59:39.945Z",
+      "mobile": true,
       "online": true,
       "tampered": false,
-      "battery": 19,
+      "battery": 7,
       "payload": {
         "type": ""
       },
-      "last_seen": 1756916017.1061084
+      "last_seen": 1756925980.29469
+    },
+    "0002_AVENGER": {
+      "type": "uav",
+      "model": "AVENGER",
+      "serial": "0002",
+      "op": "TOUCHDOWN",
+      "description": "ISR UAV on Op TOUCHDOWN",
+      "position": {
+        "lat": 44.035973686469816,
+        "lon": 23.02508869418393,
+        "alt": 2995.297502925564,
+        "spd": 29.742003280229625
+      },
+      "timestamp": "2025-09-03T18:59:39.455Z",
+      "mobile": true,
+      "online": true,
+      "tampered": false,
+      "battery": 36,
+      "payload": {
+        "type": "image_fragment",
+        "id": "UMRDB40D",
+        "format": "bmp",
+        "size_kb": 359,
+        "fragment": 7,
+        "total_fragments": 10,
+        "checksum": "b4f4c5ac"
+      },
+      "last_seen": 1756925979.813713
     }
   },
-  "timestamp": "2025-09-03T17:13:37.106551"
+  "timestamp": "2025-09-03T19:59:41.374409"
 }

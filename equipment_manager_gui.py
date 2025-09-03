@@ -1,4 +1,5 @@
 ﻿import tkinter as tk
+from ui_dialogs import CustomInputDialog, CustomNumericDialog
 import equipment_manager as eqm
 import equipment_app as eqa
 

@@ -1,3 +1,4 @@
+from ui_dialogs import CustomNumericDialog, CustomInputDialog   
 import tkinter as tk
 from tkinter import messagebox, filedialog
 import pandas as pd
@@ -203,10 +204,15 @@ class EquipmentApp:
         
         # VideoPlayer integration
         self.video_player = VideoPlayer(self.content_frame, status_callback=self.update_status)
-        
+
+        # If cache is loaded, show the equipment list immediately
+        if self.manager.devices_fetched and self.manager.equipment:
+            self.refresh_list()
+            self.update_map()
+
         # Start with map tab visible
         self.show_map_tab()
-        
+
         # Bind cleanup on window close
         self.root.protocol("WM_DELETE_WINDOW", self.on_closing)
 
@@ -490,7 +496,7 @@ class EquipmentApp:
                 print(f"✅ Map successfully centered on {model} (Serial: {serial}) at {lat}, {lon}")
 
                 # Ensure the marker is visible by refreshing the map view
-                self.root.after(100, lambda: self._ensure_marker_visible(device))
+                self.root.after(100, lambda: self._refresh_marker(device))
             else:
                 print(f"❌ Invalid coordinates for device: lat={lat}, lon={lon}")
         else:
@@ -724,14 +730,8 @@ class EquipmentApp:
             model = device.get('model', 'Unknown')
             serial = device.get('serial', 'N/A')
             online = device.get('online', False)
-
-            # Simplified marker text
             marker_text = f"{model}\n{serial}"
-
-            # Get marker config
             marker_config = self._get_marker_config(model, device.get('type', 'Unknown'), online, device.get('battery', 0))
-
-            # Create marker
             marker = self.map_widget.set_marker(
                 lat, lon,
                 text=marker_text,
@@ -750,10 +750,11 @@ class EquipmentApp:
             'color': '#FF4444',      # Bright red for default
             'outline': '#CC0000',    # Dark red outline
             'text_color': '#FFFFFF', # White text
-            'font_size': 12
+            'font_size': 12,
+            'border_color': '#000000', # Default black border
+            'border_width': 2         # Default border width
         }
 
-        # Customize based on device model/type with high-contrast colors
         model_lower = model.lower() if model else ''
         type_lower = device_type.lower() if device_type else ''
 
@@ -762,48 +763,54 @@ class EquipmentApp:
             config.update({
                 'color': '#00CED1',      # Bright turquoise
                 'outline': '#008B8B',    # Dark cyan
-                'text_color': '#000000'  # Black text for contrast
+                'text_color': '#000000', # Black text for contrast
+                'border_color': '#008B8B', # Match outline
+                'border_width': 2
             })
-
         # GPS/Tracking devices - Bright blue
         elif any(keyword in model_lower for keyword in ['gps', 'tracker', 'location', 'be300']):
             config.update({
                 'color': '#4169E1',      # Royal blue
                 'outline': '#000080',    # Navy blue
-                'text_color': '#FFFFFF'  # White text
+                'text_color': '#FFFFFF', # White text
+                'border_color': '#000080', # Match outline
+                'border_width': 2
             })
-
         # Sensor devices - Bright green
         elif any(keyword in model_lower for keyword in ['sensor', 'detector', 'monitor']):
             config.update({
                 'color': '#32CD32',      # Lime green
                 'outline': '#228B22',    # Forest green
-                'text_color': '#000000'  # Black text for contrast
+                'text_color': '#000000', # Black text for contrast
+                'border_color': '#228B22', # Match outline
+                'border_width': 2
             })
-
         # Communication devices - Bright yellow
         elif any(keyword in model_lower for keyword in ['radio', 'comm', 'transmit']):
             config.update({
                 'color': '#FFD700',      # Gold
                 'outline': '#FFA500',    # Orange
-                'text_color': '#000000'  # Black text for contrast
+                'text_color': '#000000', # Black text for contrast
+                'border_color': '#FFA500', # Match outline
+                'border_width': 2
             })
-
         # Military/Specialized equipment - Bright purple
         elif any(keyword in model_lower for keyword in ['avenger', 'scorpion', 'snooper']):
             config.update({
                 'color': '#9932CC',      # Dark orchid
                 'outline': '#4B0082',    # Indigo
-                'text_color': '#FFFFFF'  # White text
+                'text_color': '#FFFFFF', # White text
+                'border_color': '#4B0082', # Match outline
+                'border_width': 2
             })
-
         # Modify appearance based on online status
         if not online:
             # Offline devices - make them grey but still visible
             config['color'] = '#708090'  # Slate grey
             config['outline'] = '#2F4F4F'  # Dark slate grey
             config['text_color'] = '#FFFFFF'  # White text
-
+            config['border_color'] = '#2F4F4F'
+            config['border_width'] = 2
         return config
 
     def _adjust_color_brightness(self, hex_color, factor):
@@ -858,18 +865,24 @@ class EquipmentApp:
         else:
             self.selected_device_label.config(text="No device selected", fg='#666666')
 
-    def _ensure_marker_visible(self, device):
-        """Ensure the selected device's marker is visible on the map"""
+    def _refresh_marker(self, device):
+        """Force refresh of the selected device's marker on the map."""
         if "position" in device and isinstance(device["position"], dict):
             lat = device["position"].get("lat")
             lon = device["position"].get("lon")
             if lat is not None and lon is not None:
-                # Force a map refresh to ensure marker is rendered
-                self.map_widget.set_position(lat, lon)
-                self.map_widget.set_zoom(18)
-
-                # Add a small delay to ensure rendering is complete
-                self.root.after(200, self._add_selection_indicator)
+                self.map_widget.delete_all_marker()
+                model = device.get('model', 'Unknown')
+                serial = device.get('serial', 'N/A')
+                marker_text = f"{model}\n{serial}"
+                marker_config = self._get_marker_config(model, device.get('type', 'Unknown'), device.get('online', False), device.get('battery', 0))
+                self.map_widget.set_marker(
+                    lat, lon,
+                    text=marker_text,
+                    marker_color_circle=marker_config['color'],
+                    marker_color_outside=marker_config['outline'],
+                    text_color=marker_config['text_color']
+                )
 
     def _add_selection_indicator(self):
         """Add a temporary visual indicator for the selected marker"""
@@ -880,7 +893,7 @@ class EquipmentApp:
     def add_entry(self):
         # Prompt for new values with validation loop
         while True:
-            name = self.ask_string(self.root, "Add Equipment", "Type:")
+            name = CustomInputDialog.ask_string(self.root, "Add Equipment", "Type:")
             if name is None:  # Cancelled
                 return
             
@@ -892,7 +905,7 @@ class EquipmentApp:
             break
         
         while True:
-            model = self.ask_string(self.root, "Add Equipment", "Model:")
+            model = CustomInputDialog.ask_string(self.root, "Add Equipment", "Model:")
             if model is None:  # Cancelled
                 return
             
@@ -904,7 +917,7 @@ class EquipmentApp:
             break
         
         while True:
-            serial = self.ask_string(self.root, "Add Equipment", "Serial:")
+            serial = CustomInputDialog.ask_string(self.root, "Add Equipment", "Serial:")
             if serial is None:  # Cancelled
                 return
             
@@ -916,7 +929,7 @@ class EquipmentApp:
             break
         
         while True:
-            lat, cancelled = self.ask_float(self.root, "Add Equipment", "Latitude:")
+            lat, cancelled = CustomNumericDialog.ask_float(self.root, "Add Equipment", "Latitude:")
             if cancelled:  # User clicked Cancel
                 return
             
@@ -932,7 +945,7 @@ class EquipmentApp:
             break
         
         while True:
-            lon, cancelled = self.ask_float(self.root, "Add Equipment", "Longitude:")
+            lon, cancelled = CustomNumericDialog.ask_float(self.root, "Add Equipment", "Longitude:")
             if cancelled:  # User clicked Cancel
                 return
             
@@ -948,7 +961,7 @@ class EquipmentApp:
             break
         
         while True:
-            battery, cancelled = self.ask_integer(self.root, "Add Equipment", "Battery Level (%):")
+            battery, cancelled = CustomNumericDialog.ask_integer(self.root, "Add Equipment", "Battery Level (%):")
             if cancelled:  # User clicked Cancel
                 return
             
@@ -1019,7 +1032,7 @@ class EquipmentApp:
 
         # Prompt for new values with validation loops
         while True:
-            name = self.ask_string(self.root, "Update Equipment", "Type:", current_type)
+            name = CustomInputDialog.ask_string(self.root, "Update Equipment", "Type:", current_type)
             if name is None:  # Cancelled
                 return
             
@@ -1031,7 +1044,7 @@ class EquipmentApp:
             break
         
         while True:
-            model = self.ask_string(self.root, "Update Equipment", "Model:", current_model)
+            model = CustomInputDialog.ask_string(self.root, "Update Equipment", "Model:", current_model)
             if model is None:  # Cancelled
                 return
             
@@ -1043,7 +1056,7 @@ class EquipmentApp:
             break
         
         while True:
-            serial = self.ask_string(self.root, "Update Equipment", "Serial:", current_serial)
+            serial = CustomInputDialog.ask_string(self.root, "Update Equipment", "Serial:", current_serial)
             if serial is None:  # Cancelled
                 return
             
@@ -1055,7 +1068,7 @@ class EquipmentApp:
             break
         
         while True:
-            lat, cancelled = self.ask_float(self.root, "Update Equipment", "Latitude:", current_lat)
+            lat, cancelled = CustomNumericDialog.ask_float(self.root, "Update Equipment", "Latitude:", current_lat)
             if cancelled:  # User clicked Cancel
                 return
             
@@ -1071,7 +1084,7 @@ class EquipmentApp:
             break
         
         while True:
-            lon, cancelled = self.ask_float(self.root, "Update Equipment", "Longitude:", current_lon)
+            lon, cancelled = CustomNumericDialog.ask_float(self.root, "Update Equipment", "Longitude:", current_lon)
             if cancelled:  # User clicked Cancel
                 return
             
@@ -1087,7 +1100,7 @@ class EquipmentApp:
             break
         
         while True:
-            battery, cancelled = self.ask_integer(self.root, "Update Equipment", "Battery Level (%):", current_battery)
+            battery, cancelled = CustomNumericDialog.ask_integer(self.root, "Update Equipment", "Battery Level (%):", current_battery)
             if cancelled:  # User clicked Cancel
                 return
             
